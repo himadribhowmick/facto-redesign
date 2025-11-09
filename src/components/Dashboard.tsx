@@ -1,5 +1,6 @@
 import sales from "../assets/sales-icon.png";
 import total from "../assets/total-sales.png";
+import trending from "../assets/trending-up.svg";
 import factoring from "../assets/factoring-logo.png";
 import dollar from "../assets/dollar-logo.png";
 import u1 from "../assets/user1.jpg";
@@ -57,9 +58,14 @@ const Dashboard = () => {
                         <div
                           className="absolute bg-[#F1F68E] rounded-[12px] shadow-md flex flex-col items-center justify-center text-[#141414] font-[roboto] font-medium"
                           style={{ width: "135px", height: "87px", top: "-70px", left: "-54px" }}
-                        >
+                        > 
                           <p className="text-[14px] font-normal leading-[20px]">Highest sale</p>
+
+                          <div className=" flex items-center w-[103px] h-[34px] gap-2">
+                          <img src={trending} alt="total sales" className="w-[10px] h-[10px] top-[10px] left-[5px] opacity-100" />
                           <p className="text-[20px] font-bold leading-[28px] mt-[4px]">$2,450</p>
+                          </div>
+
                         </div>
                       )}
                       <div className={`rounded-t-[4px] ${color} w-full`} style={{ height: `${value}px` }}></div>

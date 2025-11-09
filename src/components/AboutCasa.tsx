@@ -28,7 +28,7 @@ const AboutCasa: React.FC = () => {
     <section className="py-16 sm:py-20 lg:py-28 px-4 sm:px-8 lg:px-20 bg-white">
       <div className="max-w-[1280px] mx-auto">
         {/* ---------- Top Section ---------- */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10 mb-14 sm:mb-16">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-2 mb-14 sm:mb-16">
           <div className="max-w-xl">
             <span className="inline-block bg-[#DFEDE3] text-[#0F4E23] text-sm sm:text-base font-medium px-4 py-1 rounded-full">
               About Casa Service
@@ -39,7 +39,7 @@ const AboutCasa: React.FC = () => {
             </h2>
           </div>
 
-          <div className="max-w-md md:text-right">
+          <div className="max-w-md">
             <p className="text-gray-600 text-[15px] sm:text-[16px] leading-[26px] mb-5">
               Empowering businesses with faster cash access, CASA provides a
               secure, fast, and flexible solution to get early payments for
@@ -60,7 +60,7 @@ const AboutCasa: React.FC = () => {
                 key={index}
                 onMouseEnter={() => setActiveIndex(index)}
                 onMouseLeave={() => setActiveIndex(null)}
-                className={`transition-all duration-500 ease-in-out p-6 sm:p-8 rounded-2xl border shadow-sm hover:cursor-pointer flex flex-col justify-between
+                className={`transition-all duration-500 ease-in-out p-6 sm:p-8 rounded-2xl border shadow-sm hover:cursor-pointer flex flex-col justify-start w-[339px] h-[290px]
                   ${
                     isActive
                       ? "bg-[#1E4620] text-white border-transparent shadow-xl"
@@ -68,18 +68,12 @@ const AboutCasa: React.FC = () => {
                   }
                 `}
               >
-                {/* Icon */}
-                <div
-                  className={`w-12 h-12 flex items-center justify-center mb-6 transition-all duration-300 rounded-full ${
-                    isActive ? "bg-white/20" : "bg-[#DFEDE3]"
-                  }`}
-                >
+                {/* Icon (small circle, left-aligned) */}
+                <div className="w-12 h-12 mb-4 rounded-full bg-[#DFEDE3] flex items-center justify-center">
                   <img
                     src={card.img}
                     alt={card.title}
-                    className={`w-6 h-6 transition duration-300 ${
-                      isActive ? "invert" : ""
-                    }`}
+                    className="w-5 h-5"
                   />
                 </div>
 
