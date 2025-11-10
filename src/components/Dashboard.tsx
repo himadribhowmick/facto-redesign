@@ -25,147 +25,176 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex justify-center py-6 bg-[#F9FAFB] px-4 sm:px-6 lg:px-10">
-      <div className="flex flex-col lg:flex-row flex-wrap justify-center items-stretch gap-10 w-full max-w-[1440px]">
-        {/* ---------------------- CARD 1 ---------------------- */}
-        <div className="bg-[#E0F0E5] w-full md:w-[500px] lg:w-[457px] rounded-xl border border-gray-200 flex flex-col justify-start p-6 sm:p-8">
-          <h2 className="flex items-center gap-4 text-[22px] sm:text-[28px] lg:text-[32px] font-semibold text-gray-800 mb-6">
-            <img src={sales} alt="sales-icon" className="w-8 sm:w-10 h-8 sm:h-10" />
-            Sales overview from Previous Day
-          </h2>
+    <div className="flex justify-center py-6 bg-[#F9FAFB]">
+      {/* Container */}
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-[36px] w-full max-w-[1440px] justify-center ">
+        {/* Card 1 */}
+        <div className="bg-[#E0F0E5] h-[665px] w-full sm:w-[500px] lg:w-[457px] py-10 px-6 rounded-lg border border-gray-200 flex justify-center">
+          <div className="w-full flex flex-col gap-6">
+            <h2 className="flex items-center gap-[24px] w-full font-[roboto] font-semibold text-[32px] leading-[40px] text-gray-800">
+              <img src={sales} alt="sales-icon" className="w-[40px] h-[40px]" />
+              Sales overview from Previous Day
+            </h2>
 
-          {/* Sales Stats */}
-          <div className="relative bg-white rounded-2xl p-5 sm:p-6 border shadow-sm flex-1">
-            <div className="flex items-center flex-wrap gap-2 sm:gap-3 mb-6">
-              <img src={total} alt="total sales" className="w-7 sm:w-8 h-7 sm:h-8" />
-              <span className="text-gray-600 text-lg sm:text-xl">Total sales:</span>
-              <span className="font-bold text-2xl sm:text-3xl text-gray-800">$12,500</span>
-            </div>
+            {/* Sales Stats */}
+            <div className="relative bg-white w-full h-[361px] rounded-[16px] p-[24px] shadow-sm border border-gray-200 mt-12">
+              <div className="flex items-center gap-[6px] absolute top-[32px] left-[32px]">
+                <img src={total} alt="total sales" className="w-[32px] h-[32px]" />
+                <span className="font-manrope font-medium text-[24px] leading-[36px] text-[#686868]">
+                  Total sales:
+                </span>
+                <span className="font-[roboto] font-bold text-[32px] leading-[40px] text-[#686868]">
+                  $12,500
+                </span>
+              </div>
 
-            {/* Bar Chart */}
-            <div className="flex justify-between items-end gap-2 sm:gap-3 w-full">
-              {barChartData.map(({ day, value, color }) => {
-                const isHighest = value === Math.max(...barChartData.map((d) => d.value));
-                return (
-                  <div key={day} className="flex flex-col items-center justify-end relative w-[24px] sm:w-[28px]">
-                    {isHighest && (
-                      <div className="absolute bg-[#F1F68E] rounded-xl shadow-md flex flex-col items-center justify-center text-[#141414] font-medium -top-[70px] left-[-50px] p-2 w-[120px] sm:w-[135px]">
-                        <p className="text-xs sm:text-sm">Highest sale</p>
-                        <div className="flex items-center gap-2">
-                          <img src={trending} alt="trending" className="w-3 h-3" />
-                          <p className="text-lg sm:text-xl font-bold">$2,450</p>
+              {/* Bar Chart */}
+              <div className="absolute top-[137px] left-[32px] w-[334px] h-[179px] flex justify-between items-end gap-[8px]">
+                {barChartData.map(({ day, value, color }) => {
+                  const isHighest = value === Math.max(...barChartData.map((d) => d.value));
+                  return (
+                    <div key={day} className="flex flex-col items-center justify-end relative w-[28px]">
+                      {isHighest && (
+                        <div
+                          className="absolute bg-[#F1F68E] rounded-[12px] shadow-md flex flex-col items-center justify-center text-[#141414] font-[roboto] font-medium"
+                          style={{ width: "135px", height: "87px", top: "-70px", left: "-54px" }}
+                        > 
+                          <p className="text-[14px] font-normal leading-[20px]">Highest sale</p>
+
+                          <div className=" flex items-center w-[103px] h-[34px] gap-2">
+                          <img src={trending} alt="total sales" className="w-[10px] h-[10px] top-[10px] left-[5px] opacity-100" />
+                          <p className="text-[20px] font-bold leading-[28px] mt-[4px]">$2,450</p>
+                          </div>
+
                         </div>
-                      </div>
-                    )}
-                    <div className={`rounded-t ${color} w-full`} style={{ height: `${value}px` }}></div>
-                    <span className="text-[11px] sm:text-xs mt-2 text-[#666]">{day}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Avg Sale */}
-          <div className="mt-6 flex items-center gap-3 w-full rounded-2xl p-4 bg-[#BFE5A6]">
-            <img src={as} alt="average sale icon" className="w-6 h-6" />
-            <p className="text-base sm:text-lg text-[#141414] font-medium">
-              Avg. sale: <span className="font-semibold">$104.16</span> / per transaction
-            </p>
-          </div>
-        </div>
-
-        {/* ---------------------- CARD 2 ---------------------- */}
-        <div className="bg-[#DAFFC2] w-full md:w-[500px] lg:w-[466px] rounded-xl border border-gray-200 p-6 sm:p-8 flex flex-col justify-between">
-          <h2 className="flex items-center gap-4 text-[22px] sm:text-[28px] lg:text-[32px] font-semibold text-[#141414] mb-6">
-            <img src={factoring} alt="factoring" className="w-10 h-10" />
-            Factoring Possible Amount
-          </h2>
-
-          {/* Available Amount */}
-          <div className="flex flex-col items-center w-full bg-white rounded-2xl shadow-lg py-6 px-4 mb-6">
-            <span className="text-[#686868] text-lg sm:text-xl mb-2">Available Amount</span>
-            <div className="flex gap-3 items-center">
-              <span className="text-3xl font-bold text-[#141414]">$15,375</span>
-              <span className="text-lg font-semibold text-[#141414]">USD</span>
-            </div>
-          </div>
-
-          {/* Factored Amount */}
-          <div className="flex flex-col items-center w-full bg-white rounded-2xl shadow-lg py-6 px-4">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-[#E0F0E5] flex items-center justify-center">
-                <img src={dollar} alt="dollar icon" className="w-5 h-5" />
+                      )}
+                      <div className={`rounded-t-[4px] ${color} w-full`} style={{ height: `${value}px` }}></div>
+                      <span className="text-[12px] mt-[6px] text-[#666]">{day}</span>
+                    </div>
+                  );
+                })}
               </div>
-              <p className="text-lg sm:text-xl font-medium text-[#141414]">
-                Factored amount vs. remaining
-              </p>
             </div>
 
-            <div className="w-full bg-[#E0F0E5] rounded-2xl p-4 flex flex-col gap-4">
-              <div className="flex justify-between text-[#686868]">
-                <p className="text-base sm:text-lg font-semibold">Factored Balance</p>
-                <p className="text-xl sm:text-2xl font-bold text-[#141414]">$11,531.25</p>
-              </div>
-              <div className="relative w-full h-4 bg-[#F2F2F2] rounded-full">
-                <div className="absolute left-0 top-0 h-4 bg-[#0F4E23] rounded-full" style={{ width: "75%" }}></div>
-                <span className="absolute -top-6 left-[70%] font-semibold text-[#141414] text-sm sm:text-base">75%</span>
+            {/* Avg Sale */}
+            <div className="mt-[50px] flex items-center gap-[8px] w-full h-[64px] rounded-[24px] p-[16px_24px] bg-[#BFE5A6] opacity-100">
+              <div className="flex items-center w-full gap-[16px]">
+                <img src={as} alt="average sale icon" className="w-[24px] h-[24px]" />
+                <p className="w-full font-roboto font-normal text-[20px] leading-[32px] text-[#141414]">
+                  Avg. sale: $104.16 / per transaction
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ---------------------- CARD 3 ---------------------- */}
-        <div className="bg-[#F1F68E] w-full md:w-[500px] lg:w-[455px] rounded-xl shadow-lg p-6 sm:p-8 flex flex-col justify-between">
-          <h2 className="flex items-center gap-4 text-[22px] sm:text-[28px] lg:text-[32px] font-semibold text-[#141414] mb-4">
-            <img src={secure} alt="secure" className="w-10 h-10" />
-            Secure & Streamlined Workflow
+        {/* Card 2 */}
+        <div className="bg-[#DAFFC2] h-[665px] w-full sm:w-[500px] lg:w-[466px] py-10 px-6 rounded-lg border border-gray-200 flex flex-col justify-between">
+          <div>
+            <h2 className="flex items-center gap-[24px] w-full h-[77px] opacity-100">
+              <img src={factoring} alt="factoring" className="w-[48px] h-[48px]" />
+              <span className="w-full font-[roboto] font-semibold text-[32px] leading-[40px] text-[#141414]">
+                Factoring Possible Amount
+              </span>
+            </h2>
+
+            <div className="mt-[54px] flex flex-col items-center w-full max-w-[245px] h-[125px] p-[24px] gap-[16px] bg-white rounded-[25px] shadow-lg mx-auto">
+              <span className="w-full font-manrope font-normal text-[24px] leading-[36px] text-center text-[#686868] flex items-center justify-center">
+                Available Amount
+              </span>
+              <div className="flex flex-row justify-center items-center w-full gap-[24px]">
+                <span className="font-[roboto] font-semibold text-[32px] leading-[40px] text-[#141414] flex items-center justify-center">
+                  $15,375
+                </span>
+                <span className="font-[roboto] font-semibold text-[18px] leading-[30px] text-[#141414] flex items-center justify-center">
+                  USD
+                </span>
+              </div>
+            </div>
+
+            {/* Factored Amount */}
+            <div className="mt-[36px] flex flex-col items-center w-full max-w-[400px] h-[281px] p-[24px] gap-[30px] bg-white rounded-[25px] shadow-lg mx-auto">
+              <div className="flex flex-row items-start gap-[16px] w-full">
+                <div className="relative w-[32px] h-[32px] rounded-full bg-[#E0F0E5] flex items-center justify-center">
+                  <img src={dollar} alt="dollar icon" className="w-[21.33px] h-[21.33px]" />
+                </div>
+                <p className="font-[roboto] font-medium text-[24px] leading-[32px] text-[#141414] flex items-center">
+                  Factored amount vs. remaining
+                </p>
+              </div>
+
+              <div className="flex flex-col items-start w-full max-w-[374px] h-[141px] p-[24px] gap-[64px] bg-[#E0F0E5] rounded-[24px]">
+                <div className="flex justify-between w-full">
+                  <p className="font-[roboto] font-semibold text-[20px] leading-[28px] text-[#686868]">
+                    Factored Balance
+                  </p>
+                  <p className="font-[roboto] font-bold text-[24px] leading-[34px] text-[#141414]">
+                    $11,531.25
+                  </p>
+                </div>
+                <div className="relative w-full max-w-[305px] h-[15px] bg-[#F2F2F2] rounded-[25px]">
+                  <div className="absolute left-0 top-0 h-[15px] bg-[#0F4E23] rounded-[25px] " style={{ width: "75%" }}></div>
+                  <span className="absolute top-[-26px] left-[206.5px] font-[roboto] font-semibold text-[18px] leading-[30px] text-[#141414] ">
+                    75%
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 3 */}
+        <div className="bg-[#F1F68E] h-[665px] w-full sm:w-[500px] lg:w-[455px] p-6 rounded-2xl shadow-lg flex flex-col justify-between">
+          <h2 className="flex items-center gap-[24px] w-full h-[100px] opacity-100">
+            <img src={secure} alt="secure" className="w-[48px] h-[48px]" />
+            <span className="w-full font-[roboto] font-semibold text-[32px] leading-[40px] text-[#141414]">
+              Secure & Streamlined Workflow
+            </span>
           </h2>
 
-          <div className="flex flex-col gap-6 items-center">
-            {/* Recent User Card */}
-            <div className="bg-white p-5 w-[90%] max-w-[300px] rounded-2xl shadow-md rotate-[-8deg]">
-              <div className="flex justify-between items-center mb-4">
-                <p className="text-lg font-bold text-gray-900">Recent user</p>
-                <p className="text-sm text-gray-500">View All</p>
+          {/* Recent Users & Balances */}
+          <div className="flex flex-col gap-6">
+            {/* Recent Users Card */}
+            <div className="bg-white p-3 shadow-sm  sm:w-60 mx-auto flex flex-col justify-between -skew-y-8 skew-x-8 w-[266.49px] h-[124.69px] top-[160.97px] left-[78.89px] py-5 px-6 gap-4 rotate-[-12.89deg] rounded-[25px]">
+              <div className="flex justify-between items-center font-roboto">
+                <p className="text-gray-900 text-xl font-bold">Recent user</p>
+                <p className="text-gray-500 text-sm">View All</p>
               </div>
-              <div className="flex -space-x-4 justify-center">
+              <div className="flex -space-x-4">
                 {us.map((u, i) => (
-                  <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden">
-                    <img src={u} alt={`user${i}`} className="w-full h-full object-cover" />
+                  <div key={i} className="w-12 h-12 rounded-full border-2 border-white overflow-hidden">
+                    <img src={u} alt={`u${i}`} className="w-full h-full object-cover" />
                   </div>
                 ))}
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-lime-100 border-2 border-white flex items-center justify-center text-sm sm:text-base font-bold">
+                <div className="w-12 h-12 rounded-full bg-lime-100 border-2 border-white flex items-center justify-center text-black font-bold">
                   9+
                 </div>
               </div>
             </div>
 
             {/* Total Balance */}
-            <div className="bg-white p-5 w-[80%] max-w-[250px] rounded-2xl shadow-md rotate-[2deg]">
-              <p className="text-gray-500 text-sm sm:text-base mb-2">Total Balance</p>
-              <p className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">23,576.00</p>
-              <button className="text-[#686868] font-semibold text-sm sm:text-base hover:underline transition">
-                <span className="bg-green-100 inline-block w-5 h-5 rounded-full mr-1">+</span> Add Number
+            <div className="bg-white p-3 shadow-sm  flex flex-col self-center xl:self-end  w-[195.61px] h-[165.95px] top-[316.93px] left-[228.59px] py-5 px-6 gap-4 -rotate-[2.5deg] rounded-[25px]">
+              <span className="text-gray-500 font-medium text-[18px] font-roboto ">Total Balance</span>
+              <span className="text-2xl font-bold text-gray-800 font-roboto">23,576.00</span>
+              <button className="text-[#686868] font-semibold text-[18px] hover:underline transition w-[147.61px] h-[26px] gap-4 ">
+                <span className="bg-green-100 inline-block w-5 h-5 rounded-full font-manrope">+</span> Add Number
               </button>
             </div>
 
             {/* Online User Card */}
-            <div className="bg-white p-5 w-full max-w-[350px] rounded-2xl shadow-md rotate-[-4deg] flex justify-between items-center">
+            <div className="bg-white p-3  shadow-sm  flex justify-between items-center mx-auto w-[373.23px] h-[96px] top-[482.88px] left-[24.25px] py-4 px-6 gap-[26px] -rotate-[-6.36deg] rounded-[25px]">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full overflow-hidden border">
+                <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden -rotate-[-6.36deg]">
                   <img src={u3} alt="u3" className="w-full h-full object-cover" />
                 </div>
-                <div>
-                  <p className="text-lg sm:text-xl font-bold text-gray-800 leading-tight">
-                    Online
-                    <br />
-                    <span className="text-[#686868] text-sm font-normal">Tommy Restaurant</span>
-                  </p>
-                </div>
+                <span className="text-gray-800 font-bold text-[24px] ">
+                  Online <br />
+                  <span className="text-[#686868] font-['Manrope'] font-normal text-base leading-[100%] tracking-normal not-italic align-middle -rotate-[-6.36deg]">Tommy Restaurant</span>
+                </span>
               </div>
               <div className="flex flex-col items-center">
-                <p className="text-gray-700 font-bold text-lg mb-1">+$10k</p>
-                <button className="bg-[#E0F0E5] text-green-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-700 hover:text-white transition">
+                <p className="text-[20px] text-gray-700 font-bold mb-1">+$10k</p>
+              <button className="bg-[#E0F0E5] text-green-800 px-3 py-1 rounded-full text-[14px] font-medium hover:bg-blue-800 transition">
                   Confirm
                 </button>
               </div>
