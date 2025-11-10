@@ -20,9 +20,13 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-sm">
+    <header className=" bg-white relative top-[70px] px-1 gap-[141px] opacity-100">
       {/* ---------- Navbar Container ---------- */}
-      <div className="max-w-[1435px] max-h-[58] flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-0 py-4 sm:py-6 lg:py-8">
+      <div
+        className="mt-[40px]  w-[1435px] h-[58px] mx-auto flex items-center justify-between 
+                   gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-[112px]
+                   px-4 sm:px-6 md:px-8  xl:px-0"
+      >
         {/* ---------- Logo + Hamburger ---------- */}
         <div className="flex items-center gap-4">
           {/* Mobile Hamburger */}
@@ -38,7 +42,7 @@ export default function Header() {
           <img
             src={logo}
             alt="Casa Logo"
-            className="w-[110px] sm:w-[130px] md:w-[140px] lg:w-[151px] h-auto object-contain"
+            className="h-[56.37px] w-auto object-contain flex-shrink-0 sm:w-[110px] md:w-[130px] lg:w-[120px] xl:w-[151px]"
           />
         </div>
 
