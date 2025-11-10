@@ -5,27 +5,27 @@ import logo from "../assets/Casa logo.png";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Prevent body scroll when menu is open
+  // Prevent scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
   const navLinks = [
-    "Services",
-    "How it works",
-    "Why is different",
-    "Reviews",
-    "Pricing",
-    "Contact",
+    { name: "Services", width: "w-[73px]" },
+    { name: "How it works", width: "w-[114px]" },
+    { name: "Why is different", width: "w-[125px]" },
+    { name: "Reviews", width: "w-[66px]" },
+    { name: "Pricing", width: "w-[56px]" },
+    { name: "Contact", width: "w-[63px]" },
   ];
 
   return (
-    <header className="w-full bg-white fixed top-0 left-0 z-50 shadow-sm">
-      {/* ---------- Desktop / Tablet Navbar ---------- */}
-      <div className="max-w-[1435px] mx-auto flex items-center justify-between px-4 md:px-8 lg:px-0 h-[64px] sm:h-[72px] lg:h-[88px] mt-[20px] sm:mt-[30px] lg:mt-[40px]">
+    <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-sm">
+      {/* ---------- Navbar Container ---------- */}
+      <div className="max-w-[1435px] max-h-[58] flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-0 py-4 sm:py-6 lg:py-8">
         {/* ---------- Logo + Hamburger ---------- */}
         <div className="flex items-center gap-4">
-          {/* Hamburger Icon (Mobile Only) */}
+          {/* Mobile Hamburger */}
           <button
             className="block lg:hidden p-2 rounded-md"
             onClick={() => setIsOpen(true)}
@@ -38,33 +38,37 @@ export default function Header() {
           <img
             src={logo}
             alt="Casa Logo"
-            className="w-[120px] sm:w-[140px] md:w-[151px] h-auto object-contain"
+            className="w-[110px] sm:w-[130px] md:w-[140px] lg:w-[151px] h-auto object-contain"
           />
         </div>
 
         {/* ---------- Nav Links (Desktop Only) ---------- */}
-        <nav className="hidden lg:flex items-center gap-10 font-roboto text-[16px] xl:text-[18px] text-[#000] font-normal">
+        <nav className="hidden lg:flex items-center justify-center gap-8 xl:gap-12 font-roboto font-normal text-[16px] md:text-[17px] xl:text-[18px] leading-[30px] text-[#141414]">
           {navLinks.map((link) => (
             <a
-              key={link}
+              key={link.name}
               href="#"
-              className="hover:text-gray-700 transition-colors duration-200"
+              className={`${link.width} h-[30px] align-middle hover:text-gray-700 transition-colors duration-200`}
             >
-              {link}
+              {link.name}
             </a>
           ))}
         </nav>
 
         {/* ---------- CTA Buttons (Desktop Only) ---------- */}
-        <div className="hidden lg:flex items-center gap-4 xl:gap-6">
+        <div className="hidden lg:flex items-center gap-3 xl:gap-6">
           {/* Sign In */}
-          <button className="px-6 py-3 bg-[#DFEDE3] rounded-full font-manrope font-semibold text-[16px] xl:text-[20px] text-[#0F4E23]">
-            Sign In
+          <button className="w-[120px] sm:w-[135px] md:w-[145px] h-[50px] md:h-[58px] pt-3 md:pt-4 pb-3 md:pb-4 px-6 md:px-10 gap-2 rounded-full bg-[#DFEDE3] flex items-center justify-center">
+            <span className="font-manrope font-semibold text-[16px] md:text-[18px] lg:text-[20px] leading-[24px] md:leading-[26px] text-[#0F4E23]">
+              Sign In
+            </span>
           </button>
 
           {/* Sign Up */}
-          <button className="px-6 py-3 bg-[#000000] text-white rounded-full font-manrope font-semibold text-[16px] xl:text-[20px]">
-            Sign Up
+          <button className="w-[125px] sm:w-[140px] md:w-[154px] h-[50px] md:h-[58px] pt-3 md:pt-4 pb-3 md:pb-4 px-6 md:px-10 gap-2 rounded-full bg-[#141414] flex items-center justify-center">
+            <span className="font-manrope font-semibold text-[16px] md:text-[18px] lg:text-[20px] leading-[24px] md:leading-[26px] text-[#FFFFFF]">
+              Sign Up
+            </span>
           </button>
         </div>
       </div>
@@ -75,48 +79,46 @@ export default function Header() {
           id="menu-overlay"
           className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm flex"
           onClick={(e) => {
-            if ((e.target as HTMLElement).id === "menu-overlay") setIsOpen(false);
+            if ((e.target as HTMLElement).id === "menu-overlay")
+              setIsOpen(false);
           }}
         >
           <div
-            className="bg-white w-[75%] max-w-[320px] h-full p-6 flex flex-col justify-between shadow-xl animate-slideInLeft"
+            className="bg-white w-[75%] sm:w-[70%] max-w-[320px] h-full p-6 flex flex-col justify-between shadow-xl animate-slideInLeft"
             style={{ animation: "slideInLeft 0.3s ease-out" }}
           >
-            {/* Top Section: Logo + Close */}
+            {/* Top: Logo + Close */}
             <div className="flex items-center justify-between mb-8">
               <img
                 src={logo}
                 alt="Casa Logo"
                 className="w-[110px] sm:w-[130px] h-auto object-contain"
               />
-              <button
-                onClick={() => setIsOpen(false)}
-                aria-label="Close Menu"
-              >
+              <button onClick={() => setIsOpen(false)} aria-label="Close Menu">
                 <X className="w-6 h-6 text-black" />
               </button>
             </div>
 
-            {/* Navigation Links */}
+            {/* Mobile Nav Links */}
             <nav className="flex flex-col space-y-6 font-roboto text-[16px] sm:text-[18px] text-[#000]">
               {navLinks.map((link) => (
                 <a
-                  key={link}
+                  key={link.name}
                   href="#"
                   onClick={() => setIsOpen(false)}
                   className="hover:text-gray-700 transition-colors duration-150"
                 >
-                  {link}
+                  {link.name}
                 </a>
               ))}
             </nav>
 
-            {/* CTA Buttons */}
+            {/* Mobile CTA Buttons */}
             <div className="flex flex-col gap-4 mt-10">
-              <button className="w-full py-3 bg-[#DFEDE3] rounded-full font-manrope font-semibold text-[16px] text-[#0F4E23]">
+              <button className="w-full py-3 sm:py-3.5 bg-[#DFEDE3] rounded-full font-manrope font-semibold text-[16px] sm:text-[18px] text-[#0F4E23]">
                 Sign In
               </button>
-              <button className="w-full py-3 bg-[#000000] text-white rounded-full font-manrope font-semibold text-[16px]">
+              <button className="w-full py-3 sm:py-3.5 bg-[#000000] text-white rounded-full font-manrope font-semibold text-[16px] sm:text-[18px]">
                 Sign Up
               </button>
             </div>
@@ -124,7 +126,7 @@ export default function Header() {
         </div>
       )}
 
-      {/* ---------- Mobile Slide Animation ---------- */}
+      {/* ---------- Slide Animation ---------- */}
       <style>
         {`
           @keyframes slideInLeft {
