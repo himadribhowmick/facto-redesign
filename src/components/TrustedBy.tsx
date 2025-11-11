@@ -15,7 +15,7 @@ const companies = [
 
 export default function TrustedBy() {
   return (
-    <section className="bg-green-900 py-10 px-4 overflow-hidden">
+    <section className="bg-green-900 py-10 px-4 overflow-hidden pb-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:gap-10 gap-6">
         {/* Title */}
         <span className="text-white font-semibold text-2xl text-center md:text-left flex-shrink-0">

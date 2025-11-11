@@ -1,9 +1,9 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import TrustedBy from './components/TrustedBy';
-import Dashboard from './components/Dashboard';
+// import Dashboard from './components/Dashboard';
 // import Features from './components/Features';
-import AboutCasa from "./components/AboutCasa";
+// import AboutCasa from "./components/AboutCasa";
 // import HowItWorks from "./components/HowItWorks";
 // import WhyCasa from "./components/WhyCasa";
 // import CustomerReviews from "./components/CustomerReviews";
@@ -17,10 +17,10 @@ function App() {
       
       <Header />
       <Hero />
-      <Dashboard/>
       <TrustedBy />
+      {/* <Dashboard/> */}      
       {/* <Features /> */}
-      <AboutCasa />
+      {/* <AboutCasa /> */}
       {/* <HowItWorks />
       <WhyCasa />
       <CustomerReviews />
