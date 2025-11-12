@@ -25,31 +25,41 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex justify-center py-6 bg-[#F9FAFB]">
+    <div className="">
       {/* Container */}
-      <div className="flex flex-col lg:flex-row gap-10 lg:gap-[36px] w-full max-w-[1440px] justify-center ">
+      <div className="w-[1440px] h-[665x] opacity-100  gap-[141px] pt-20 bg-[#F9FAFB] flex flex-col align-middle justify-center lg:flex-row lg:gap-[36px] max-w-[1440px] ">
         {/* Card 1 */}
-        <div className="bg-[#E0F0E5] h-[665px] w-full sm:w-[500px] lg:w-[457px] py-10 px-6 rounded-lg border border-gray-200 flex justify-center">
-          <div className="w-full flex flex-col gap-6">
-            <h2 className="flex items-center gap-[24px] w-full font-[roboto] font-semibold text-[32px] leading-[40px] text-gray-800">
-              <img src={sales} alt="sales-icon" className="w-[40px] h-[40px]" />
+        
+          <div className="w-[457px] h-[665px] opacity-100 p-[46px_28px] flex flex-col align-middle justify-between  gap-2 rounded-[24px]  bg-[#E0F0E5] ">
+            <div className="w-[401px] h-[587px] opacity-100 flex flex-col gap-[50px]">
+            <div className="w-[401px] h-[62px] opacity-100 flex items-center gap-[24px] bg-[#E0F0E5]">
+              
+            <h2 className="flex items-center w-[334px] h-[62px] opacity-100 font-roboto font-semibold text-[32px] leading-[40px] align-middle text-[#141414] gap-6">
+              <img src={sales} alt="sales-icon" className=" w-[40px] h-[40px]" />
               Sales overview from Previous Day
             </h2>
+            
+            </div>
 
             {/* Sales Stats */}
-            <div className="relative bg-white w-full h-[361px] rounded-[16px] p-[24px] shadow-sm border border-gray-200 mt-12">
-              <div className="flex items-center gap-[6px] absolute top-[32px] left-[32px]">
+            
+            <div className="w-[400px] h-[475px] opacity-100 flex flex-col  items-center justify-center gap-[50px] relative      ">
+              <div className="w-[400px] h-[361px] opacity-100 rounded-[24px] bg-[#FFFFFF] flex align-middle">
+              <div className="flex gap-4 items-center  w-[308px] h-[40px] opacity-100 absolute top-[32px] left-[32.5px] ">
                 <img src={total} alt="total sales" className="w-[32px] h-[32px]" />
-                <span className="font-manrope font-medium text-[24px] leading-[36px] text-[#686868]">
+                <span className="w-[260px] h-[40px] opacity-100 flex gap-2">
+                <span className="w-[133px] h-[22px] opacity-100 font-manrope font-medium text-[24px] leading-[36px] align-middle text-[#686868]">
                   Total sales:
                 </span>
-                <span className="font-[roboto] font-bold text-[32px] leading-[40px] text-[#686868]">
+                <span className="w-[119px] h-[40px] opacity-100 font-roboto font-bold text-[32px] leading-[40px] align-middle text-[#686868]">
                   $12,500
+                </span>
                 </span>
               </div>
 
               {/* Bar Chart */}
-              <div className="absolute top-[137px] left-[32px] w-[334px] h-[179px] flex justify-between items-end gap-[8px]">
+              <div className="absolute left-[33px] top-[102px] flex justify-between  items-end gap-[8px] w-[334px] h-[232px] opacity-100 ">
+                
                 {barChartData.map(({ day, value, color }) => {
                   const isHighest = value === Math.max(...barChartData.map((d) => d.value));
                   return (
@@ -73,74 +83,85 @@ const Dashboard = () => {
                     </div>
                   );
                 })}
+               
               </div>
-            </div>
+              </div>
+            
 
             {/* Avg Sale */}
-            <div className="mt-[50px] flex items-center gap-[8px] w-full h-[64px] rounded-[24px] p-[16px_24px] bg-[#BFE5A6] opacity-100">
-              <div className="flex items-center w-full gap-[16px]">
+            <div className=" flex items-center w-[400px] h-[64px] opacity-100 pt-4 pr-6 pb-4 pl-6 gap-2 rounded-[24px] bg-[#BFE5A6] ">
+              <div className="flex items-center w-[355px] h-[32px] opacity-100 gap-4">
                 <img src={as} alt="average sale icon" className="w-[24px] h-[24px]" />
-                <p className="w-full font-roboto font-normal text-[20px] leading-[32px] text-[#141414]">
-                  Avg. sale: $104.16 / per transaction
+                <p className="w-[315px] h-[32px] opacity-100 font-roboto font-normal text-[20px] leading-[32px] align-middle text-[#141414]">
+                  Avg. sale: $104.16/per transection
                 </p>
               </div>
             </div>
+            
           </div>
-        </div>
+          </div>
+          </div>
+        
 
         {/* Card 2 */}
-        <div className="bg-[#DAFFC2] h-[665px] w-full sm:w-[500px] lg:w-[466px] py-10 px-6 rounded-lg border border-gray-200 flex flex-col justify-between">
-          <div>
-            <h2 className="flex items-center gap-[24px] w-full h-[77px] opacity-100">
+        {/* Factoring Possible Amount */}
+        <div className=" sm:w-[500px] lg:w-[466px] border border-gray-200 flex flex-col justify-between w-[456px] h-[665px] opacity-100 pt-[46px] pr-[28px] pb-[46px] pl-[28px] gap-[54px] rounded-[25px] bg-[#DAFFC2]">
+            <h2 className="flex items-center align-middle justify-between w-[388px] h-[77px] opacity-100  gap-[24px]">
               <img src={factoring} alt="factoring" className="w-[48px] h-[48px]" />
-              <span className="w-full font-[roboto] font-semibold text-[32px] leading-[40px] text-[#141414]">
+              <span className="w-[316px] h-[77px] opacity-100 font-roboto font-semibold text-[32px] leading-[40px] text-[#141414]">
                 Factoring Possible Amount
               </span>
             </h2>
-
-            <div className="mt-[54px] flex flex-col items-center w-full max-w-[245px] h-[125px] p-[24px] gap-[16px] bg-white rounded-[25px] shadow-lg mx-auto">
-              <span className="w-full font-manrope font-normal text-[24px] leading-[36px] text-center text-[#686868] flex items-center justify-center">
+            
+            {/* Available Amount & Factored amount vs. remaining */}
+            <div className="w-[400px] h-[442px] opacity-100 flex flex-col items-center  gap-[36px] ">
+            <div className=" items-center max-w-[245px] w-[245px] h-[125px] opacity-100 flex flex-col gap-[16px] rounded-[25px] p-[24px] bg-[#FFFFFF]">
+              <span className="flex items-center justify-center w-[197px] h-[21px] opacity-100 font-manrope font-normal text-[24px] leading-[36px] text-center align-middle text-[#686868]">
                 Available Amount
               </span>
-              <div className="flex flex-row justify-center items-center w-full gap-[24px]">
-                <span className="font-[roboto] font-semibold text-[32px] leading-[40px] text-[#141414] flex items-center justify-center">
+              <div className="flex flex-row justify-center items-center w-[197px] h-[40px] opacity-100 gap-[24px]">
+                <span className=" flex items-center justify-center w-[118px] h-[40px] opacity-100 font-roboto font-semibold text-[32px] leading-[40px] align-middle text-[#141414]">
                   $15,375
                 </span>
-                <span className="font-[roboto] font-semibold text-[18px] leading-[30px] text-[#141414] flex items-center justify-center">
+                <span className=" flex items-center justify-center w-[35px] h-[19px] opacity-100 font-roboto font-semibold text-[18px] leading-[30px] align-middle text-[#141414]">
                   USD
                 </span>
               </div>
             </div>
 
             {/* Factored Amount */}
-            <div className="mt-[36px] flex flex-col items-center w-full max-w-[400px] h-[281px] p-[24px] gap-[30px] bg-white rounded-[25px] shadow-lg mx-auto">
-              <div className="flex flex-row items-start gap-[16px] w-full">
+            <div className="mt-[36px] items-center max-w-[400px] w-[400px] h-[281px] opacity-100 flex flex-col gap-[30px] rounded-[25px] p-[24px] bg-[#FFFFFF]">
+              <div className="flex flex-row items-start w-[348px] h-[62px] opacity-100 gap-4">
                 <div className="relative w-[32px] h-[32px] rounded-full bg-[#E0F0E5] flex items-center justify-center">
                   <img src={dollar} alt="dollar icon" className="w-[21.33px] h-[21.33px]" />
                 </div>
-                <p className="font-[roboto] font-medium text-[24px] leading-[32px] text-[#141414] flex items-center">
-                  Factored amount vs. remaining
+                <p className="flex items-center w-[300px] h-[62px] opacity-100 font-roboto font-medium text-[24px] leading-[32px] align-middle text-[#141414]">
+                  Factored amount vs. remaining balance 
                 </p>
               </div>
 
-              <div className="flex flex-col items-start w-full max-w-[374px] h-[141px] p-[24px] gap-[64px] bg-[#E0F0E5] rounded-[24px]">
-                <div className="flex justify-between w-full">
-                  <p className="font-[roboto] font-semibold text-[20px] leading-[28px] text-[#686868]">
+              <div className=" w-[374px] h-[141px] opacity-100 flex flex-col gap-[64px] rounded-[24px] p-[24px] bg-[#E0F0E5]">
+                
+                <div className="flex justify-between w-[326px] h-[14px] gap-12">
+                  <p className=" text-[20px] opacity-100 gap-[48px] rounded-[24px] w-[154px] h-[28px] font-['Roboto'] font-semibold text-lg leading-[28px] text-[#686868] text-left">
                     Factored Balance
                   </p>
-                  <p className="font-[roboto] font-bold text-[24px] leading-[34px] text-[#141414]">
+                  <p className="text-[24px] w-[124px] h-[34px] font-['Roboto'] font-bold text-2xl leading-[34px] text-[#141414] text-right ">
                     $11,531.25
                   </p>
                 </div>
-                <div className="relative w-full max-w-[305px] h-[15px] bg-[#F2F2F2] rounded-[25px]">
-                  <div className="absolute left-0 top-0 h-[15px] bg-[#0F4E23] rounded-[25px] " style={{ width: "75%" }}></div>
-                  <span className="absolute top-[-26px] left-[206.5px] font-[roboto] font-semibold text-[18px] leading-[30px] text-[#141414] ">
+                
+                <div className="relative w-[305px] h-[15px]  rounded-[25px] bg-[#F2F2F2] opacity-100">
+                  <div className="absolute left-0 top-0 w-[234px] h-[15px] rounded-[25px] bg-[#0F4E23] opacity-100" style={{ width: "75%" }}></div>
+                  <span className="absolute top-[-26px] left-[206.5px] text-[18px] leading-[30px] w-[34px] h-[21px] font-['Roboto'] font-semibold text-lg text-[#141414] align-middle ">
                     75%
                   </span>
                 </div>
+    
               </div>
             </div>
-          </div>
+            </div>
+          
         </div>
 
         {/* Card 3 */}
